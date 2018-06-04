@@ -5,6 +5,7 @@ import Pure.Data.Default
 import Pure.Data.JSON
 import Pure.Data.Try
 import Pure.Data.Txt as Txt
+import Pure.Data.View
 
 import qualified Data.IntMap as IntMap
 import qualified Data.IntSet as IntSet
@@ -254,6 +255,11 @@ instance {-# OVERLAPPING #-} Cond Value where
 #else
     (== Null)
 #endif
+
+instance Cond View where
+  nil = NullView Nothing
+  isNil (NullView _) = True
+  isNil _ = False
 
 class GCond f where
   gnil :: f a
