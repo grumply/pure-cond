@@ -248,6 +248,12 @@ instance {-# OVERLAPPING #-} Cond Value where
 #else
     Null
 #endif
+  isNil =
+#ifdef __GHCJS__
+    (== nullValue)
+#else
+    (== Null)
+#endif
 
 class GCond f where
   gnil :: f a
