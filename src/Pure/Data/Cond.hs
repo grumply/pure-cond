@@ -79,18 +79,18 @@ class Cond a where
   notNil :: a -> Bool
   notNil = not . isNil
 
-infixl 9 ?
+infixr 1 ?
 (?) :: (Cond x) => x -> a -> a -> a
 (?) x t e = if notNil x then t else e
 
-infixl 9 !?
+infixr 1 !?
 (!?) :: (Cond x) => x -> a -> a -> a
 (!?) x t e = if isNil x then t else e
 
 may :: Cond a => (b -> a) -> Maybe b -> a
 may = maybe nil
 
-infixl 9 #
+infixr 6 #
 (#) :: (Cond x, Default a) => x -> a -> a
 (#) b t = b Pure.Data.Cond.? t $ def
 
