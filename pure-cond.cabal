@@ -17,6 +17,7 @@ library
     pure-core >= 0.7 && < 1,
     pure-default >= 0.7 && < 1,
     pure-json >= 0.7 && < 1,
+    pure-lifted >= 0.7 && < 1,
     pure-try >= 0.7 && < 1,
     pure-txt >= 0.7 && < 1,
     unordered-containers,

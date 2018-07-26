@@ -3,6 +3,7 @@ module Pure.Data.Cond where
 
 import Pure.Data.Default
 import Pure.Data.JSON
+import Pure.Data.Lifted
 import Pure.Data.Try
 import Pure.Data.Txt as Txt
 import Pure.Data.View
@@ -101,6 +102,12 @@ instance Cond [a] where
   nil = []
   isNil [] = True
   isNil _ = False
+
+#ifdef __GHCJS__
+instance Cond JSV where
+  nil = nullJSV
+  isNil = isNull
+#endif
 
 instance Cond a => Cond (Either a b) where
   nil = Left nil
