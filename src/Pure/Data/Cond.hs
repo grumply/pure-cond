@@ -138,12 +138,16 @@ instance Cond () where
 
 instance Cond Any where
   nil = Any False
+  isNil (Any a) = not a
 
 instance Cond All where
   nil = All False
+  isNil (All a) = not a
 
 instance Cond Ordering where
   nil = LT
+  isNil LT = True
+  isNil _ = False
 
 instance Cond (Last a) where
   nil = Last Nothing
